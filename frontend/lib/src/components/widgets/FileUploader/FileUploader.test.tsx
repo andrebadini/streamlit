@@ -31,6 +31,7 @@ import {
 import { WidgetStateManager } from "@streamlit/lib/src/WidgetStateManager"
 
 import FileUploader, { Props } from "./FileUploader"
+import FileDropzone from "./FileDropzone"
 
 const createFile = (filename = "filename.txt"): File => {
   return new File(["Text in a file!"], filename, {
@@ -685,5 +686,13 @@ describe("FileUploader widget tests", () => {
       },
       undefined
     )
+  })
+  
+  it("renders custom browse button text", () => {
+    const customButtonText = "Procurar arquivos"
+    const props = getProps({ browseButtonText: customButtonText })
+    render(<FileDropzone {...props} />)
+
+    expect(screen.getByText(customButtonText)).toBeInTheDocument()
   })
 })

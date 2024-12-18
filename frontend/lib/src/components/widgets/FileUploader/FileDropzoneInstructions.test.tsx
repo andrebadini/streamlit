@@ -61,4 +61,12 @@ describe("FileDropzoneInstructions widget", () => {
     render(<FileDropzoneInstructions {...props} />)
     expect(screen.getByText(/• JPG, CSV.GZ, PNG, TAR.GZ/)).toBeInTheDocument()
   })
+
+  it("renders custom drag and drop text", () => {
+    const customText = "Arraste e solte seus arquivos aqui"
+    const props = getProps({ dragAndDropText: customText })
+    render(<FileDropzoneInstructions {...props} />)
+
+    expect(screen.getByText(customText)).toBeInTheDocument()
+  })
 })
