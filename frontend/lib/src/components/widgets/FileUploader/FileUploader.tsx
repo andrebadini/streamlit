@@ -59,6 +59,8 @@ export interface Props {
   uploadClient: FileUploadClient
   width: number
   fragmentId?: string
+  browseButtonText?: string
+  dragAndDropText?: string
 }
 
 type FileUploaderStatus =
@@ -555,6 +557,8 @@ class FileUploader extends React.PureComponent<Props, State> {
           maxSizeBytes={this.maxUploadSizeInBytes}
           label={element.label}
           disabled={disabled}
+          browseButtonText={this.props.browseButtonText}
+          dragAndDropText={this.props.dragAndDropText}
         />
         {newestToOldestFiles.length > 0 && (
           <UploadedFiles

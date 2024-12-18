@@ -33,12 +33,14 @@ export interface Props {
   multiple: boolean
   acceptedExtensions: string[]
   maxSizeBytes: number
+  dragAndDropText?: string
 }
 
 const FileDropzoneInstructions = ({
   multiple,
   acceptedExtensions,
   maxSizeBytes,
+  dragAndDropText = `Drag and drop file${multiple ? "s" : ""} here`,
 }: Props): React.ReactElement => (
   <StyledFileDropzoneInstructions data-testid="stFileUploaderDropzoneInstructions">
     <StyledFileDropzoneInstructionsFileUploaderIcon>
@@ -46,7 +48,7 @@ const FileDropzoneInstructions = ({
     </StyledFileDropzoneInstructionsFileUploaderIcon>
     <StyledFileDropzoneInstructionsColumn>
       <StyledFileDropzoneInstructionsStyledSpan>
-        Drag and drop file{multiple ? "s" : ""} here
+        {dragAndDropText}
       </StyledFileDropzoneInstructionsStyledSpan>
       <Small>
         {`Limit ${getSizeDisplay(maxSizeBytes, FileSize.Byte, 0)} per file`}

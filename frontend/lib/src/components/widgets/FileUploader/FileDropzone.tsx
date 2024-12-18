@@ -33,6 +33,8 @@ export interface Props {
   acceptedExtensions: string[]
   maxSizeBytes: number
   label: string
+  browseButtonText?: string
+  dragAndDropText?: string
 }
 
 const FileDropzone = ({
@@ -42,6 +44,8 @@ const FileDropzone = ({
   maxSizeBytes,
   disabled,
   label,
+  browseButtonText = "Browse files",
+  dragAndDropText,
 }: Props): React.ReactElement => (
   <Dropzone
     onDrop={onDrop}
@@ -68,13 +72,14 @@ const FileDropzone = ({
           multiple={multiple}
           acceptedExtensions={acceptedExtensions}
           maxSizeBytes={maxSizeBytes}
+          dragAndDropText={dragAndDropText}
         />
         <BaseButton
           kind={BaseButtonKind.SECONDARY}
           disabled={disabled}
           size={BaseButtonSize.SMALL}
         >
-          Browse files
+          {browseButtonText}
         </BaseButton>
       </StyledFileDropzoneSection>
     )}
