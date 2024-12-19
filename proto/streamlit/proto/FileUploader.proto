@@ -47,4 +47,10 @@ message FileUploader {
   LabelVisibilityMessage label_visibility = 10;
 
   reserved 5;
+  
+  // Custom text for the browse button
+  string browse_button_text = 11;
+
+  // Custom text for the drag and drop area
+  string drag_and_drop_text = 12;
 }
