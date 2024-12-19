@@ -150,6 +150,8 @@ class FileUploaderMixin:
         accept_multiple_files: Literal[True],
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -168,6 +170,8 @@ class FileUploaderMixin:
         accept_multiple_files: Literal[False] = False,
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -192,6 +196,8 @@ class FileUploaderMixin:
         type: str | Sequence[str] | None = None,
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -210,6 +216,8 @@ class FileUploaderMixin:
         type: str | Sequence[str] | None = None,
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -225,6 +233,8 @@ class FileUploaderMixin:
         accept_multiple_files: bool = False,
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -281,6 +291,12 @@ class FileUploaderMixin:
             Streamlit only displays the tooltip when
             ``label_visibility="visible"``.
 
+        browse_button_text : str,
+            Custom text for the browse button. The default is "Browse file(s)".
+
+        drag_and_drop_text : str,
+            Custom text for the drag and drop area. The default is "Drag and drop file(s) here".
+        
         on_change : callable
             An optional callback invoked when this file_uploader's value
             changes.
@@ -364,6 +380,8 @@ class FileUploaderMixin:
             accept_multiple_files=accept_multiple_files,
             key=key,
             help=help,
+            browse_button_text=browse_button_text,
+            drag_and_drop_text=drag_and_drop_text,
             on_change=on_change,
             args=args,
             kwargs=kwargs,
@@ -379,6 +397,8 @@ class FileUploaderMixin:
         accept_multiple_files: bool = False,
         key: Key | None = None,
         help: str | None = None,
+        browse_button_text: str | None = None,
+        drag_and_drop_text: str | None = None,
         on_change: WidgetCallback | None = None,
         args: WidgetArgs | None = None,
         kwargs: WidgetKwargs | None = None,
@@ -427,6 +447,12 @@ class FileUploaderMixin:
 
         if help is not None:
             file_uploader_proto.help = dedent(help)
+
+        if browse_button_text is not None:
+            file_uploader_proto.browse_button_text = browse_button_text
+
+        if drag_and_drop_text is not None:
+            file_uploader_proto.drag_and_drop_text = drag_and_drop_text
 
         serde = FileUploaderSerde(accept_multiple_files)
 
